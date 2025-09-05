@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Books4All - Impact Stories</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #6db910d7; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #059669; }
+  </style>
+</head>
+<body id="bodyRoot" class="transition-colors duration-300">
+
+  <!-- NAVBAR -->
+  <header class="bg-white/90 dark:bg-gray-800/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="text-2xl font-bold text-green-600 dark:text-green-400">📚 Books4All</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6 text-base font-medium">
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate</a>
+        <a href="browse.html">Browse</a>
+        <a href="testimonials.html" class="text-green-600 dark:text-green-400">Stories</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900">
+          <i id="themeIcon" class="ri-moon-line text-xl"></i>
+        </button>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded hover:bg-green-100 dark:hover:bg-green-900">
+          <i class="ri-menu-line text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white dark:bg-gray-800">
+      <nav class="flex flex-col p-4 space-y-3 text-lg">
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate</a>
+        <a href="browse.html">Browse</a>
+        <a href="testimonials.html" class="text-green-600 dark:text-green-400">Stories</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="text-center bg-gradient-to-b from-green-100 to-white dark:from-gray-800 dark:to-gray-900 py-24" data-aos="fade-down">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">Real Stories. Real Impact.</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300">Discover how a single book changed lives, built dreams, and lit paths.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-20 bg-white dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <div class="bg-green-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <p class="text-gray-700 dark:text-gray-200 mb-4">"Getting these books helped me prepare for my board exams. Thank you to everyone who donated."</p>
+        <div class="font-semibold text-green-700 dark:text-green-400">Sumit Kumar, Class 12, Bihar</div>
+      </div>
+
+      <div class="bg-green-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <p class="text-gray-700 dark:text-gray-200 mb-4">"We built a mini-library in our village with the books received through Books4All."</p>
+        <div class="font-semibold text-green-700 dark:text-green-400">Tarun Atri, NGO Volunteer</div>
+      </div>
+
+      <div class="bg-green-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <p class="text-gray-700 dark:text-gray-200 mb-4">"I donated my son's schoolbooks. Knowing they’re still helping someone is heartwarming."</p>
+        <div class="font-semibold text-green-700 dark:text-green-400">Harshit Pathak, Book Donor</div>
+      </div>
+
+      <div class="bg-green-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <p class="text-gray-700 dark:text-gray-200 mb-4">"Books4All helped our school get storybooks that inspire our students daily."</p>
+        <div class="font-semibold text-green-700 dark:text-green-400">Sachin Yadav., Govt School Teacher</div>
+      </div>
+
+      <div class="bg-green-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <p class="text-gray-700 dark:text-gray-200 mb-4">"It’s more than books—it’s hope, growth, and confidence in every child’s eyes."</p>
+        <div class="font-semibold text-green-700 dark:text-green-400">Saiyam jain, Volunteer Coordinator</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-gray-800 text-center py-10 border-t border-gray-200 dark:border-gray-700">
+    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Books4All. Made with ❤️ by Sachin Yadav.</p>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scrollTopBtn" title="Back to top" class="hidden fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full shadow-lg">
+    ⬆️ Top
+  </button>
+
+  <!-- SCRIPTS -->
+  <script>
+    window.addEventListener('load', () => {
+      if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
+    });
+
+    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('hidden', window.scrollY <= 400);
+    });
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(dark) {
+      const root = document.documentElement;
+      const body = document.getElementById('bodyRoot');
+      if (dark) {
+        root.classList.add('dark'); body.classList.add('bg-black', 'text-white');
+        body.classList.remove('bg-white', 'text-black');
+        themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+        localStorage.setItem('books4all-theme', 'dark');
+      } else {
+        root.classList.remove('dark'); body.classList.add('bg-white', 'text-black');
+        body.classList.remove('bg-black', 'text-white');
+        themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+        localStorage.setItem('books4all-theme', 'light');
+      }
+    }
+    (function initTheme() {
+      const stored = localStorage.getItem('books4all-theme');
+      if (stored) applyTheme(stored === 'dark');
+      else applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    })();
+    themeToggle?.addEventListener('click', () => applyTheme(!document.documentElement.classList.contains('dark')));
+  </script>
+</body>
+</html>

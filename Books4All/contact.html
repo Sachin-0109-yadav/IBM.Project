@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Books4All</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #6db910d7; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #059669; }
+  </style>
+</head>
+<body id="bodyRoot" class="transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="bg-white/90 dark:bg-gray-800/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="text-2xl font-bold text-green-600 dark:text-green-400">📚 Books4All</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6 font-medium">
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate</a>
+        <a href="browse.html">Browse</a>
+        <a href="testimonials.html">Stories</a>
+        <a href="contact.html" class="text-green-600 dark:text-green-400 font-semibold">Contact</a>
+      </nav>
+      <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900">
+        <i id="themeIcon" class="ri-moon-line text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-green-50 dark:bg-gray-900 py-20 text-center" data-aos="zoom-in">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">Contact Us</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300">We’d love to hear from you. Whether it’s a donation, a partnership, or a simple hello!</p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-16 bg-white dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-4">
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Your Name" class="p-4 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white" required>
+        <input type="email" placeholder="Your Email" class="p-4 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white" required>
+        <input type="text" placeholder="Subject" class="md:col-span-2 p-4 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white" required>
+        <textarea rows="5" placeholder="Your Message" class="md:col-span-2 p-4 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white" required></textarea>
+        <button type="submit" class="md:col-span-2 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded font-semibold transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Google Map -->
+  <section class="bg-gray-100 dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-semibold text-center mb-6 text-gray-800 dark:text-white">Our Location</h2>
+      <iframe class="w-full h-96 rounded-lg shadow" src="https://maps.google.com/maps?q=delhi&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 dark:bg-gray-800 text-center py-8 mt-10 border-t dark:border-gray-700">
+    <p class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Books4All. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // AOS
+    window.addEventListener('load', () => {
+      if (window.AOS) {
+        AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
+      }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(dark) {
+      const root = document.documentElement;
+      const body = document.getElementById('bodyRoot');
+      if (dark) {
+        root.classList.add('dark');
+        body.classList.remove('bg-white', 'text-black');
+        body.classList.add('bg-black', 'text-white');
+        themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+        localStorage.setItem('books4all-theme', 'dark');
+      } else {
+        root.classList.remove('dark');
+        body.classList.remove('bg-black', 'text-white');
+        body.classList.add('bg-white', 'text-black');
+        themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+        localStorage.setItem('books4all-theme', 'light');
+      }
+    }
+    (function initTheme() {
+      const stored = localStorage.getItem('books4all-theme');
+      if (stored) {
+        applyTheme(stored === 'dark');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark);
+      }
+    })();
+    themeToggle?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isDark);
+    });
+  </script>
+</body>
+</html>

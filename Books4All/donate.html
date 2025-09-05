@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate | Books4All</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: #4ade80; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #22c55e; }
+  </style>
+</head>
+<body id="bodyRoot" class="bg-white text-black transition-colors duration-300">
+
+  <!-- ========================= NAVBAR ========================= -->
+  <header class="bg-white/90 dark:bg-gray-800/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-green-600 dark:text-green-400">📚 Books4All</a>
+      <nav class="hidden md:flex gap-6 font-medium">
+        <a href="index.html" class="hover:text-green-600 dark:hover:text-green-400">Home</a>
+        <a href="donate.html" class="text-green-600 dark:text-green-400 font-semibold">Donate</a>
+        <a href="browse.html" class="hover:text-green-600 dark:hover:text-green-400">Browse</a>
+        <a href="testimonials.html" class="hover:text-green-600 dark:hover:text-green-400">Stories</a>
+        <a href="contact.html" class="hover:text-green-600 dark:hover:text-green-400">Contact</a>
+      </nav>
+      <button id="themeToggle" class="p-2 rounded-full hover:bg-green-100 dark:hover:bg-green-900 transition">
+        <i id="themeIcon" class="ri-moon-line text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================= HERO ========================= -->
+  <section class="bg-gradient-to-br from-green-50 via-white to-green-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 text-center" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4 text-green-700 dark:text-green-300">Donate Your Books</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300">Your books can empower students and change futures. Fill the form below to contribute.</p>
+    </div>
+  </section>
+
+  <!-- ========================= DONATION FORM ========================= -->
+  <section class="py-16 bg-white dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto px-4">
+      <form class="bg-green-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg space-y-6">
+        <div>
+          <label class="block mb-2 font-medium">Your Name</label>
+          <input type="text" class="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white" placeholder="John Doe" required>
+        </div>
+        <div>
+          <label class="block mb-2 font-medium">Email Address</label>
+          <input type="email" class="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white" placeholder="email@example.com" required>
+        </div>
+        <div>
+          <label class="block mb-2 font-medium">Book Titles & Quantity</label>
+          <textarea rows="4" class="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white" placeholder="List the books and quantities..." required></textarea>
+        </div>
+        <div>
+          <label class="block mb-2 font-medium">Pickup Address</label>
+          <textarea rows="3" class="w-full p-3 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-white" placeholder="Complete address for pickup..." required></textarea>
+        </div>
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded font-semibold shadow transition w-full">Submit Donation</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="bg-gray-100 dark:bg-gray-800 text-center py-8 border-t border-gray-200 dark:border-gray-700">
+    <div class="text-sm text-gray-600 dark:text-gray-300">&copy; 2025 Books4All — Donate & Inspire. All rights reserved.</div>
+  </footer>
+
+  <!-- ========================= SCRIPTS ========================= -->
+  
+<script>
+  window.addEventListener('load', () => {
+    if (window.AOS) {
+      AOS.init({ duration: 700, once: true });
+    }
+  });
+
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function applyTheme(dark) {
+    const root = document.documentElement;
+    const body = document.getElementById('bodyRoot');
+    if (dark) {
+      root.classList.add('dark');
+      body.classList.remove('bg-white', 'text-black');
+      body.classList.add('bg-black', 'text-white');
+      themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+      localStorage.setItem('books4all-theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      body.classList.remove('bg-black', 'text-white');
+      body.classList.add('bg-white', 'text-black');
+      themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+      localStorage.setItem('books4all-theme', 'light');
+    }
+  }
+
+  (function initTheme() {
+    const stored = localStorage.getItem('books4all-theme');
+    if (stored) {
+      applyTheme(stored === 'dark');
+    } else {
+      applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+  })();
+
+  themeToggle?.addEventListener('click', () => {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  // ✅ Form submit handler
+  document.addEventListener("DOMContentLoaded", function () {
+    const donateForm = document.querySelector("form");
+
+    donateForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+   
+    });
+  });
+</script>
+
+</body>
+</html>
